@@ -1,0 +1,30 @@
+table dim_remboursement
+	lineageTag: e1b6e0aa-827c-4d8c-b86c-03e1e9bc8360
+	sourceLineageTag: [dbo].[dim_remboursement]
+
+	column RemboursementKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 5952337e-f264-460f-94c3-fd8b80748280
+		sourceLineageTag: RemboursementKey
+		summarizeBy: none
+		sourceColumn: RemboursementKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column RemboursementCategory
+		dataType: string
+		lineageTag: a9d4cbfd-bb9c-4ebe-b989-f3f47cc723a9
+		sourceLineageTag: RemboursementCategory
+		summarizeBy: none
+		sourceColumn: RemboursementCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_remboursement = entity
+		mode: directLake
+		source
+			entityName: dim_remboursement
+			schemaName: dbo
+			expressionSource: 'DirectLake - LH_Pharma'
+

@@ -1,0 +1,36 @@
+relationship 548e900a-28bb-8319-d59b-2296032266dd
+	fromColumn: fact_bdpm_cis.FormeKey
+	toColumn: dim_forme_pharmaceutique.FormeKey
+
+relationship 4f2e54b5-8153-f6ed-70f3-2f8f7fd41811
+	fromColumn: fact_bdpm_cis.TitulaireKey
+	toColumn: dim_titulaire.TitulaireKey
+
+relationship d03f8173-724e-8bb0-d2b9-1c5f6c70721c
+	fromColumn: fact_bdpm_cis.InnovationKey
+	toColumn: dim_innovation.InnovationKey
+
+relationship a1bf1bc7-ef28-b482-f4e0-37c5ad67f4bb
+	fromColumn: fact_bdpm_cis.RisqueKey
+	toColumn: dim_risque_sanitaire.RisqueKey
+
+relationship 02f3779d-d3d8-9d85-c7b4-e5590a2c9ced
+	fromColumn: fact_bdpm_cis.RemboursementKey
+	toColumn: dim_remboursement.RemboursementKey
+
+relationship e6bb4b98-7866-08d8-f774-d6e8b3a210ab
+	fromColumn: fact_bdpm_cis.PrixRangeKey
+	toColumn: dim_prix_range.PrixRangeKey
+
+relationship acf4a995-5ed7-c82a-adfa-3943aa87edab
+	fromColumn: fact_bdpm_cis.AncienneteKey
+	toColumn: dim_anciennete_amm.AncienneteKey
+
+relationship cd2ff032-2767-45d5-b2e2-ef4dd7c4e6cf
+	fromColumn: fact_bdpm_cis.ComplexiteKey
+	toColumn: dim_complexite.ComplexiteKey
+
+relationship 2bc91022-6c89-60fa-c94f-ffe59a57d7ac
+	fromColumn: fact_bdpm_cis.SMRLevelKey
+	toColumn: dim_smr_level.SMRLevelKey
+

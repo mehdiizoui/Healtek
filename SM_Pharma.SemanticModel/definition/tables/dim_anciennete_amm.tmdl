@@ -1,0 +1,46 @@
+table dim_anciennete_amm
+	lineageTag: faf211dc-c80d-43e8-a77b-30bf30697c5d
+	sourceLineageTag: [dbo].[dim_anciennete_amm]
+
+	measure 'KPI 20 - Durée Moyenne Indispo' =
+			
+			AVERAGE('fact_bdpm_cis'[DureeMoyenneIndispoJours])
+		formatString: 0
+		lineageTag: 805ab216-1a69-4291-af1a-bff486738f25
+
+		changedProperty = Name
+
+	measure 'Nb Medicaments' =
+			
+			DISTINCTCOUNT ( fact_bdpm_cis[CIS] )
+		formatString: 0
+		lineageTag: 00610459-6281-4811-bdf9-3900dacd6374
+
+		changedProperty = Name
+
+	column AncienneteKey
+		dataType: int64
+		formatString: 0
+		lineageTag: cff99321-9d07-499f-bc36-f64a75b27365
+		sourceLineageTag: AncienneteKey
+		summarizeBy: none
+		sourceColumn: AncienneteKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column AncienneteAMM
+		dataType: string
+		lineageTag: f4c9d6ff-285f-46d2-997a-fe1357035db0
+		sourceLineageTag: AncienneteAMM
+		summarizeBy: none
+		sourceColumn: AncienneteAMM
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_anciennete_amm = entity
+		mode: directLake
+		source
+			entityName: dim_anciennete_amm
+			schemaName: dbo
+			expressionSource: 'DirectLake - LH_Pharma'
+

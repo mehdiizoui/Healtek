@@ -1,0 +1,30 @@
+table dim_titulaire
+	lineageTag: 3b746b83-8226-4bd5-bc8e-ad0cf0e315ab
+	sourceLineageTag: [dbo].[dim_titulaire]
+
+	column TitulaireKey
+		dataType: int64
+		formatString: 0
+		lineageTag: d3d78c75-1f45-478e-ab0a-8d943e5cabee
+		sourceLineageTag: TitulaireKey
+		summarizeBy: none
+		sourceColumn: TitulaireKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Titulaire
+		dataType: string
+		lineageTag: 7b460c42-89aa-4882-b790-f38b87550df0
+		sourceLineageTag: Titulaire
+		summarizeBy: none
+		sourceColumn: Titulaire
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_titulaire = entity
+		mode: directLake
+		source
+			entityName: dim_titulaire
+			schemaName: dbo
+			expressionSource: 'DirectLake - LH_Pharma'
+

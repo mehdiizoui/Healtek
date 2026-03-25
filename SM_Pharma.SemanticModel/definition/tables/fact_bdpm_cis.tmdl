@@ -1,0 +1,543 @@
+table fact_bdpm_cis
+	lineageTag: 1d90fa9b-c5aa-427c-86e6-b1f336ecd006
+	sourceLineageTag: [dbo].[fact_bdpm_cis]
+
+	measure 'KPI Test' =
+			
+			COUNTROWS('fact_bdpm_cis')
+		formatString: 0
+		lineageTag: 266f808c-b351-4af4-bdf7-9489af509880
+
+		changedProperty = Name
+
+	measure 'KPI 19 - Taux Critiques'
+		lineageTag: 0b9662f0-b858-4a5f-a34b-4903a4849871
+
+		changedProperty = Name
+
+	measure 'Nb Médicaments' =
+			
+			DISTINCTCOUNT('fact_bdpm_cis'[CIS])
+		formatString: 0
+		lineageTag: 4c14bbbf-b3d7-48a6-adda-dee762f64a7c
+
+		changedProperty = Name
+
+	measure 'Taux Commercialisés' =
+			
+			DIVIDE(
+			    SUM('fact_bdpm_cis'[FlagCommercialise]),
+			    DISTINCTCOUNT('fact_bdpm_cis'[CIS])
+			)
+		formatString: 0
+		lineageTag: 2a770513-ad62-4b7d-8605-299ac34af8c0
+
+		changedProperty = Name
+
+	measure 'Nb Commercialisés' =
+			
+			SUM('fact_bdpm_cis'[FlagCommercialise])
+		formatString: 0
+		lineageTag: f12543ef-4c55-4c37-8c2f-e83bb3c43a7a
+
+		changedProperty = Name
+
+	measure 'Nb Remboursables' =
+			
+			SUM('fact_bdpm_cis'[FlagRemboursable])
+		formatString: 0
+		lineageTag: 2a13cc72-2e12-42a4-a082-4989c3047c55
+
+		changedProperty = Name
+
+	measure 'Taux Remboursables' =
+			
+			DIVIDE(
+			    SUM('fact_bdpm_cis'[FlagRemboursable]),
+			    DISTINCTCOUNT('fact_bdpm_cis'[CIS])
+			)
+		lineageTag: a12903ef-5072-4286-a41a-c79525ffb426
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Prix Moyen' =
+			
+			AVERAGE('fact_bdpm_cis'[PrixMoyen])
+		lineageTag: 9bb6c559-d863-48c4-9d17-62ee5e25950e
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Prix Maximum' =
+			
+			MAX('fact_bdpm_cis'[PrixMax])
+		lineageTag: d9bb101d-7a85-45c7-b6c6-6ae63434b102
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Nb Prix Élevé' =
+			
+			SUM('fact_bdpm_cis'[FlagPrixEleve])
+		formatString: 0
+		lineageTag: 7e949c82-5d53-414f-a1cc-b38819b0f352
+
+		changedProperty = Name
+
+	measure 'Taux Prix Élevé' =
+			
+			DIVIDE(
+			    SUM('fact_bdpm_cis'[FlagPrixEleve]),
+			    DISTINCTCOUNT('fact_bdpm_cis'[CIS])
+			)
+		lineageTag: d3e6601d-11e7-4b5e-8312-15db2492247d
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Nb Remboursement Fort' =
+			
+			SUM('fact_bdpm_cis'[FlagRemboursable])
+		formatString: 0
+		lineageTag: a16ff51b-eca0-4a22-8b03-95ed8499770c
+
+		changedProperty = Name
+
+	measure 'Nb Évaluation HAS' =
+			
+			SUM('fact_bdpm_cis'[FlagEvaluationHAS])
+		formatString: 0
+		lineageTag: 9c358996-f914-4084-bf67-0479e66bad72
+
+		changedProperty = Name
+
+	measure 'Taux Évaluation HAS' =
+			
+			DIVIDE(
+			    SUM('fact_bdpm_cis'[FlagEvaluationHAS]),
+			    DISTINCTCOUNT('fact_bdpm_cis'[CIS])
+			)
+		lineageTag: 95b626b8-5e9d-4ee4-a989-3b8c4a8db101
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Taux Innovation Forte' =
+			
+			DIVIDE(
+			    SUM('fact_bdpm_cis'[FlagInnovationForte]),
+			    DISTINCTCOUNT('fact_bdpm_cis'[CIS])
+			)
+		formatString: 0
+		lineageTag: 97c25b83-0b19-44fc-9ae5-4ac036feb313
+
+		changedProperty = Name
+
+	measure 'Nb MeToo' =
+			
+			SUM('fact_bdpm_cis'[FlagMeToo])
+		formatString: 0
+		lineageTag: 4f204686-a65d-4214-a0f3-eb50e709f6fc
+
+		changedProperty = Name
+
+	measure 'Nb Alerte Disponibilité' =
+			
+			SUM('fact_bdpm_cis'[FlagAlerteDispo])
+		formatString: 0
+		lineageTag: aafc0a0a-8e79-468e-8a84-784885a1df3c
+
+		changedProperty = Name
+
+	measure 'Taux Alerte Disponibilité' =
+			
+			DIVIDE(
+			    SUM('fact_bdpm_cis'[FlagAlerteDispo]),
+			    DISTINCTCOUNT('fact_bdpm_cis'[CIS])
+			)
+		lineageTag: f30a0766-b455-490b-9dbd-93b0f8f04477
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Nb Critiques' =
+			
+			SUM('fact_bdpm_cis'[FlagCritiqueGlobal])
+		formatString: 0
+		lineageTag: cf5f730a-400b-40ec-b58a-d9d08930f22c
+
+		changedProperty = Name
+
+	measure 'Taux Critiques' =
+			
+			DIVIDE(
+			    SUM('fact_bdpm_cis'[FlagCritiqueGlobal]),
+			    DISTINCTCOUNT('fact_bdpm_cis'[CIS])
+			)
+		lineageTag: 3c0e6844-4873-4fec-ac2c-982816c68762
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Durée Moyenne Indispo' =
+			
+			AVERAGE('fact_bdpm_cis'[DureeMoyenneIndispoJours])
+		lineageTag: 6b4fff08-47a9-46b6-8600-42918c5bafdb
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Measure
+		lineageTag: 84c1171b-0164-4b59-aa15-d1a514d6bfa2
+
+		annotation 43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c = True
+
+	column CIS
+		dataType: string
+		lineageTag: e143d194-bfec-4c38-a965-bd0d6e2d47a6
+		sourceLineageTag: CIS
+		summarizeBy: none
+		sourceColumn: CIS
+
+		annotation SummarizationSetBy = Automatic
+
+	column Denomination
+		dataType: string
+		lineageTag: 9305bf5d-9ee5-43d5-984c-4d40e7d2a845
+		sourceLineageTag: Denomination
+		summarizeBy: none
+		sourceColumn: Denomination
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateAMM
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: b406911c-0211-4b46-a669-8df0bb70ff4d
+		sourceLineageTag: DateAMM
+		summarizeBy: none
+		sourceColumn: DateAMM
+
+		annotation SummarizationSetBy = Automatic
+
+	column GoldEnrichmentLoadDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 8fafe66e-0a6f-46d1-b6eb-2d2d6a89c0fe
+		sourceLineageTag: GoldEnrichmentLoadDate
+		summarizeBy: none
+		sourceColumn: GoldEnrichmentLoadDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column FormeKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 09647305-6c60-4ba1-9ee5-465f1b3ba20f
+		sourceLineageTag: FormeKey
+		summarizeBy: none
+		sourceColumn: FormeKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column TitulaireKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 755f01a2-4668-4595-aafb-17e6136c1f63
+		sourceLineageTag: TitulaireKey
+		summarizeBy: none
+		sourceColumn: TitulaireKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column InnovationKey
+		dataType: int64
+		formatString: 0
+		lineageTag: b4892f39-262f-42a0-8765-1504eddb0c18
+		sourceLineageTag: InnovationKey
+		summarizeBy: none
+		sourceColumn: InnovationKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column RisqueKey
+		dataType: int64
+		formatString: 0
+		lineageTag: c351aa66-2538-4f01-bd48-e5dd762c7ca0
+		sourceLineageTag: RisqueKey
+		summarizeBy: none
+		sourceColumn: RisqueKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column RemboursementKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 000d6fcc-8844-4056-a036-29383e6eb2ca
+		sourceLineageTag: RemboursementKey
+		summarizeBy: none
+		sourceColumn: RemboursementKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrixRangeKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 0bbe1f4c-16c3-4f55-8bbc-f01713f06e48
+		sourceLineageTag: PrixRangeKey
+		summarizeBy: none
+		sourceColumn: PrixRangeKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column AncienneteKey
+		dataType: int64
+		formatString: 0
+		lineageTag: afaad17b-03ed-4365-988f-27e7d3c88c15
+		sourceLineageTag: AncienneteKey
+		summarizeBy: none
+		sourceColumn: AncienneteKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ComplexiteKey
+		dataType: int64
+		formatString: 0
+		lineageTag: dacb38cd-6292-478b-af8a-0cef19d1b6b6
+		sourceLineageTag: ComplexiteKey
+		summarizeBy: none
+		sourceColumn: ComplexiteKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column SMRLevelKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 54400670-2397-4e3c-9ee2-b001294953bb
+		sourceLineageTag: SMRLevelKey
+		summarizeBy: none
+		sourceColumn: SMRLevelKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrixMin
+		dataType: double
+		lineageTag: 20a29b5f-2f92-4734-9005-4638e6f04f06
+		sourceLineageTag: PrixMin
+		summarizeBy: sum
+		sourceColumn: PrixMin
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PrixMax
+		dataType: double
+		lineageTag: 266649b6-23ed-49e3-a66c-9ed836d18292
+		sourceLineageTag: PrixMax
+		summarizeBy: sum
+		sourceColumn: PrixMax
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PrixMoyen
+		dataType: double
+		lineageTag: fbbff4d5-f1a2-499e-8b59-8a3253ab2836
+		sourceLineageTag: PrixMoyen
+		summarizeBy: sum
+		sourceColumn: PrixMoyen
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TauxRemboursementMax
+		dataType: int64
+		formatString: 0
+		lineageTag: 001a197b-bac1-4069-92a0-ef567c9eae75
+		sourceLineageTag: TauxRemboursementMax
+		summarizeBy: sum
+		sourceColumn: TauxRemboursementMax
+
+		annotation SummarizationSetBy = Automatic
+
+	column NbPresentations
+		dataType: int64
+		formatString: 0
+		lineageTag: fb8b0948-9a7c-4331-ae1b-df422a279281
+		sourceLineageTag: NbPresentations
+		summarizeBy: sum
+		sourceColumn: NbPresentations
+
+		annotation SummarizationSetBy = Automatic
+
+	column NbPresentationsCommercialisees
+		dataType: int64
+		formatString: 0
+		lineageTag: 0c4ff9de-79ea-49ac-9fb2-49421bf45031
+		sourceLineageTag: NbPresentationsCommercialisees
+		summarizeBy: sum
+		sourceColumn: NbPresentationsCommercialisees
+
+		annotation SummarizationSetBy = Automatic
+
+	column NbSubstancesDistinctes
+		dataType: int64
+		formatString: 0
+		lineageTag: 6f73e9cd-93d5-480f-8a34-39736fd8805f
+		sourceLineageTag: NbSubstancesDistinctes
+		summarizeBy: sum
+		sourceColumn: NbSubstancesDistinctes
+
+		annotation SummarizationSetBy = Automatic
+
+	column NbAvisSMR
+		dataType: int64
+		formatString: 0
+		lineageTag: 071803e1-edaa-4834-90ae-8de4e6244c54
+		sourceLineageTag: NbAvisSMR
+		summarizeBy: sum
+		sourceColumn: NbAvisSMR
+
+		annotation SummarizationSetBy = Automatic
+
+	column NbAvisASMR
+		dataType: int64
+		formatString: 0
+		lineageTag: be3ba060-5ef5-4204-8716-3cf16c7a9b6c
+		sourceLineageTag: NbAvisASMR
+		summarizeBy: sum
+		sourceColumn: NbAvisASMR
+
+		annotation SummarizationSetBy = Automatic
+
+	column DureeMoyenneIndispoJours
+		dataType: double
+		lineageTag: 853e8a41-9ebb-49bc-850c-e0f0429420b1
+		sourceLineageTag: DureeMoyenneIndispoJours
+		summarizeBy: sum
+		sourceColumn: DureeMoyenneIndispoJours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FlagMITM
+		dataType: int64
+		formatString: 0
+		lineageTag: d1dc7dbd-ffee-4e97-a2f2-96866ede0ec1
+		sourceLineageTag: FlagMITM
+		summarizeBy: sum
+		sourceColumn: FlagMITM
+
+		annotation SummarizationSetBy = Automatic
+
+	column FlagAlerteDispo
+		dataType: int64
+		formatString: 0
+		lineageTag: 5b153492-1093-456b-9dc6-8a8fafd77109
+		sourceLineageTag: FlagAlerteDispo
+		summarizeBy: sum
+		sourceColumn: FlagAlerteDispo
+
+		annotation SummarizationSetBy = Automatic
+
+	column FlagRemboursable
+		dataType: int64
+		formatString: 0
+		lineageTag: b6b617c7-0cae-4703-a9c8-d5f631514435
+		sourceLineageTag: FlagRemboursable
+		summarizeBy: sum
+		sourceColumn: FlagRemboursable
+
+		annotation SummarizationSetBy = Automatic
+
+	column FlagCommercialise
+		dataType: int64
+		formatString: 0
+		lineageTag: 5f9f4766-8c69-421a-84ab-3979a85378b0
+		sourceLineageTag: FlagCommercialise
+		summarizeBy: sum
+		sourceColumn: FlagCommercialise
+
+		annotation SummarizationSetBy = Automatic
+
+	column FlagEvaluationHAS
+		dataType: int64
+		formatString: 0
+		lineageTag: 71575ae7-7b1b-41c9-bbcf-6b3f12980486
+		sourceLineageTag: FlagEvaluationHAS
+		summarizeBy: sum
+		sourceColumn: FlagEvaluationHAS
+
+		annotation SummarizationSetBy = Automatic
+
+	column FlagInnovationForte
+		dataType: int64
+		formatString: 0
+		lineageTag: 6a313c4b-644e-41cb-a0eb-360ae691e83f
+		sourceLineageTag: FlagInnovationForte
+		summarizeBy: sum
+		sourceColumn: FlagInnovationForte
+
+		annotation SummarizationSetBy = Automatic
+
+	column FlagMeToo
+		dataType: int64
+		formatString: 0
+		lineageTag: fdb2e386-dad2-42ce-b594-f8aaf1cd2801
+		sourceLineageTag: FlagMeToo
+		summarizeBy: sum
+		sourceColumn: FlagMeToo
+
+		annotation SummarizationSetBy = Automatic
+
+	column FlagPrixEleve
+		dataType: int64
+		formatString: 0
+		lineageTag: 784b95a3-9fe9-41c6-a9e7-b71803818a4c
+		sourceLineageTag: FlagPrixEleve
+		summarizeBy: sum
+		sourceColumn: FlagPrixEleve
+
+		annotation SummarizationSetBy = Automatic
+
+	column FlagCritiqueGlobal
+		dataType: int64
+		formatString: 0
+		lineageTag: d7401011-3b96-4d44-8cc6-c2a58e616729
+		sourceLineageTag: FlagCritiqueGlobal
+		summarizeBy: sum
+		sourceColumn: FlagCritiqueGlobal
+
+		annotation SummarizationSetBy = Automatic
+
+	column AgeAMM_Annees
+		dataType: double
+		lineageTag: e76f488f-387a-4d13-b30c-cfa540457d47
+		sourceLineageTag: AgeAMM_Annees
+		summarizeBy: sum
+		sourceColumn: AgeAMM_Annees
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition fact_bdpm_cis = entity
+		mode: directLake
+		source
+			entityName: fact_bdpm_cis
+			schemaName: dbo
+			expressionSource: 'DirectLake - LH_Pharma'
+

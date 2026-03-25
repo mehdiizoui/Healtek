@@ -1,0 +1,30 @@
+table dim_complexite
+	lineageTag: 918ddfa7-6e4e-4264-b12e-9d684f425c7c
+	sourceLineageTag: [dbo].[dim_complexite]
+
+	column ComplexiteKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 67e816b7-102d-42d6-bc4a-5c2fa0884514
+		sourceLineageTag: ComplexiteKey
+		summarizeBy: none
+		sourceColumn: ComplexiteKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Complexite
+		dataType: string
+		lineageTag: 6d0b1b73-5b0b-4101-856e-4e8a53a98e5b
+		sourceLineageTag: Complexite
+		summarizeBy: none
+		sourceColumn: Complexite
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_complexite = entity
+		mode: directLake
+		source
+			entityName: dim_complexite
+			schemaName: dbo
+			expressionSource: 'DirectLake - LH_Pharma'
+

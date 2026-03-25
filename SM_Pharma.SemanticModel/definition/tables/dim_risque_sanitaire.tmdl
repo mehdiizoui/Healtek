@@ -1,0 +1,30 @@
+table dim_risque_sanitaire
+	lineageTag: 6448e4ee-06b6-4042-b720-d51e700da243
+	sourceLineageTag: [dbo].[dim_risque_sanitaire]
+
+	column RisqueKey
+		dataType: int64
+		formatString: 0
+		lineageTag: e8f5f7aa-ae23-44e6-835d-4c2b63ff4efe
+		sourceLineageTag: RisqueKey
+		summarizeBy: none
+		sourceColumn: RisqueKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column RisqueSanitaire
+		dataType: string
+		lineageTag: 95cb8142-c846-4de4-b3b3-e96f3bda2278
+		sourceLineageTag: RisqueSanitaire
+		summarizeBy: none
+		sourceColumn: RisqueSanitaire
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_risque_sanitaire = entity
+		mode: directLake
+		source
+			entityName: dim_risque_sanitaire
+			schemaName: dbo
+			expressionSource: 'DirectLake - LH_Pharma'
+

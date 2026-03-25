@@ -1,0 +1,30 @@
+table dim_smr_level
+	lineageTag: 7089203f-767b-4baa-b1f7-1d46de9727b6
+	sourceLineageTag: [dbo].[dim_smr_level]
+
+	column SMRLevelKey
+		dataType: int64
+		formatString: 0
+		lineageTag: f6ec011e-47eb-43d6-a0cd-82d7c37e1307
+		sourceLineageTag: SMRLevelKey
+		summarizeBy: none
+		sourceColumn: SMRLevelKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column SMR_Level
+		dataType: string
+		lineageTag: 1eacc3db-1b54-4375-a8f5-dd4af15cfb0e
+		sourceLineageTag: SMR_Level
+		summarizeBy: none
+		sourceColumn: SMR_Level
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_smr_level = entity
+		mode: directLake
+		source
+			entityName: dim_smr_level
+			schemaName: dbo
+			expressionSource: 'DirectLake - LH_Pharma'
+
